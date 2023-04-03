@@ -32,12 +32,32 @@
             <div class="list-group-item">
                 {{"Contrato ativo: "}} @if($Company->contrato_ativo) {{"Sim"}} @else {{"Não"}} @endif
             </div>
+            <div>
+                <a href="{{route('Companies.edit',$Company)}}" class="col-3 mt-2 btn btn-sm btn-dark">
+                    Editar
+                </a>
+            </div>
         </div>
         <div class="col list-group">
             <h3 class="list-group-item">Gestor</h3>
+            <div class="list-group-item">{{$Gestor[0]['nome']}}</div>
+            <div class="list-group-item">{{"CPF: "}}{{$Gestor[0]['cpf']}}</div>
+            <div class="list-group-item">{{"Contato: "}}{{$Gestor[0]['contato']}}</div>
         </div>
         <div class="col list-group">
             <h3 class="list-group-item">Fiscais</h3>
+            <div class="row">
+                <div class="col">
+                    <div class="list-group-item">{{$Fiscais[0]['nome']}}</div>
+                    <div class="list-group-item">{{"CPF: "}}{{$Fiscais[0]['cpf']}}</div>
+                    <div class="list-group-item">{{"Contato: "}}{{$Fiscais[0]['contato']}}</div>
+                </div>
+                <div class="col">
+                    <div class="list-group-item">{{$Fiscais[1]['nome']}}</div>
+                    <div class="list-group-item">{{"CPF: "}}{{$Fiscais[1]['cpf']}}</div>
+                    <div class="list-group-item">{{"Contato: "}}{{$Fiscais[1]['contato']}}</div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

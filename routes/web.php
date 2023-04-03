@@ -20,4 +20,4 @@ Route::get('/', function () {
 
 
 Route::resource('Companies', ContratosController::class)
-    ->only('index','create','store','show');
+    ->except(['destroy']);

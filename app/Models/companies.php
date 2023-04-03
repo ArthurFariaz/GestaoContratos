@@ -9,8 +9,7 @@ class companies extends Model
 {
     use HasFactory;
     protected $table = 'companies';
-    protected $fillable = ['nome'];
-
+    protected $fillable = ['nome','cnpj','descricao','contrato_ativo','contratos_id'];
 
     public function Contrato()
     {

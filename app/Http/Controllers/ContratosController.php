@@ -11,7 +11,7 @@ use Illuminate\Routing\Controller;
 class ContratosController extends Controller
 {
     public function index(){
-        //$Companies = ['Oi','Anatel'];
+
         $Companies = companies::all();
         return view('Companies.index')->with('Companies',$Companies);
     }
@@ -34,16 +34,13 @@ class ContratosController extends Controller
     }
 
     public function show(companies $Company){
+
         $Fiscais = administrador::where('contratos_id',$Company->contratos_id)
             ->where('cargo',0)
             ->get();
         $Gestor = administrador::where('contratos_id',$Company->contratos_id)
             ->where('cargo',1)
             ->get();
-        //$administrador = administrador::where('cargo',0)->get();
-
-        dd($Fiscais);
-
 
         return view('Companies.show')
             ->with('Company',$Company)
@@ -51,4 +48,19 @@ class ContratosController extends Controller
             ->with('Fiscais',$Fiscais);
     }
 
+
+    public function edit(companies $Company){
+
+        return view('Companies.edit')
+            ->with('Company',$Company);
+    }
+
+    public function update(companies $Company,Request $request)
+    {
+        dd($Company);
+        $Company->fill($request->all());
+        $Company->save();
+
+        return to_route('Companies.index');
+    }
 }
