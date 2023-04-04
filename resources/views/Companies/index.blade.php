@@ -10,6 +10,7 @@
 
 </head>
     <body>
+        @include('sweetalert::alert')
         <div class="container mt-4">
             <h1>Empresas</h1>
             <ul class="mt-3 list-group col-6">

@@ -23,8 +23,10 @@
     </style>
 </head>
 <body>
+@include('sweetalert::alert')
 <div class="container-sm text-center col-5">
-    <form action="{{route('Companies.update',$Company)}}" class="mt-4" method="put">
+    <form method="post" action="{{route('Companies.update',$Company)}}" class="mt-4">
+        @method('PUT')
         @csrf
         <h2>Cadastro de empresas</h2>
         <div class="pd-4 mb-3 mt-4">
@@ -48,6 +50,7 @@
             <option value="1">Sim</option>
             <option value="0">Não</option>
         </select>
+
         <button type="submit" class="mt-4 btn btn-dark">Atualizar</button>
     </form>
 </div>
