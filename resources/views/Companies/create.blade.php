@@ -45,6 +45,11 @@
             <option value="0">Não</option>
         </select>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
+        <div>
+            <a href="{{route('Companies.index')}}" type="submit" class="mt-2 btn btn-primary">
+                Voltar
+            </a>
+        </div>
     </form>
 </div>
 </body>

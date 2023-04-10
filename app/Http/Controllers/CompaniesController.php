@@ -2,18 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{administrador,companies};
+use App\Models\{administrator,company};
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
 
 
-class ContratosController extends Controller
+class CompaniesController extends Controller
 {
     public function index(){
 
-        $Companies = companies::query()->orderBy('nome')->get();
+        $Companies = company::query()->orderBy('nome')->get();
         return view('Companies.index')->with('Companies',$Companies);
+
     }
 
     public function create(){
@@ -22,39 +23,37 @@ class ContratosController extends Controller
 
     public function store(Request $request){
 
-        $Company = new companies();
+        $Company = new company();
         $Company->nome = $request->input('NameInput');
         $Company->cnpj = $request->input('CnpjInput');
         $Company->descricao = $request->input('DescricaoInput');
         $Company->contrato_ativo = $request->input('ContratoInput');
-        $Company->contratos_id = 1;
+        //$Company->contratos_id = 1;
         $Company->save();
-        Alert::success('Empresa cadastrada');
+
+        alert()->success('Empresa criada')->toToast();
         return to_route('Companies.index');
     }
 
-    public function show(companies $Company){
-
-        $Fiscais = administrador::where('contratos_id',$Company->contratos_id)
+    public function show(company $Company){
+        /*
+        $Fiscais = administrator::where('contratos_id',$Company->contratos_id)
             ->where('cargo',0)
             ->get();
-        $Gestor = administrador::where('contratos_id',$Company->contratos_id)
+        $Gestor = administrator::where('contratos_id',$Company->contratos_id)
             ->where('cargo',1)
             ->get();
+        */
+        return view('Companies.show',compact(['Company']));
 
-        return view('Companies.show')
-            ->with('Company',$Company)
-            ->with('Gestor',$Gestor)
-            ->with('Fiscais',$Fiscais);
     }
 
 
-    public function edit(companies $Company){
-        return view('Companies.edit')
-            ->with('Company',$Company);
+    public function edit(company $Company){
+        return view('Companies.edit',compact(['Company']));
     }
 
-    public function update(companies $Company,Request $request){
+    public function update(company $Company,Request $request){
         Alert::success('Empresa atualizada');
 
         $Company->nome = $request->NameInput;

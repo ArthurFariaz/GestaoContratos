@@ -37,6 +37,11 @@
                     Editar
                 </a>
             </div>
+            <div>
+                <a href="{{route('Companies.index')}}" type="submit" class="mt-2 btn btn-primary">
+                    Voltar
+                </a>
+            </div>
         </div>
         <div class="col list-group">
             <h3 class="list-group-item">Gestor</h3>

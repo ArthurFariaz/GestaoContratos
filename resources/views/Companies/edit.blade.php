@@ -29,7 +29,7 @@
         @method('PUT')
         @csrf
         <h2>Cadastro de empresas</h2>
-        <div class="pd-4 mb-3 mt-4">
+        <div class="pd-4 mb-3 mt-3">
             <label for="NameInput" class="form-label">Nome</label>
             <input type="text" value="{{$Company->nome}}" class="form-control" id="NameInput" name="NameInput">
         </div>
@@ -52,6 +52,12 @@
         </select>
 
         <button type="submit" class="mt-4 btn btn-dark">Atualizar</button>
+        <div>
+            <a href="{{route('Companies.show',$Company)}}" type="submit" class="mt-1 btn btn-primary">
+                Voltar
+            </a>
+        </div>
+
     </form>
 </div>
 </body>

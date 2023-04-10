@@ -11,15 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('administradors', function (Blueprint $table) {
-
+        Schema::create('contract-company', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('contratos_id')->constrained();
-            $table->boolean('cargo'); // 0 -> fiscal .. 1 -> gestor
-            $table->string('cpf');
-            $table->string('contato');
-            $table->string('nome');
+            $table->foreignId('adm_id')->constrained();
         });
     }
 
@@ -28,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('administradors');
+        Schema::dropIfExists('contract-company');
     }
 };

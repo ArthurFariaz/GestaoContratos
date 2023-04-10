@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\ContratosController;
+use App\Http\Controllers\{CompaniesController,ContractsController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,9 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return redirect('/Companies');
+    return redirect('/Contracts');
 });
+Route::resource('Contracts', ContractsController::class)
+    ->except(['destroy']);
 
-
-Route::resource('Companies', ContratosController::class)
+Route::resource('Companies', CompaniesController::class)
     ->except(['destroy']);

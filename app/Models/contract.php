@@ -5,18 +5,18 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class contrato extends Model
+class contract extends Model
 {
     use HasFactory;
 
 
     public function Empresas()
     {
-        return $this->hasOne(companies::class);
+        return $this->hasMany(company::class);
     }
     public function Administradores()
     {
-        return $this->hasMany(administrador::class);
+        return $this->hasMany(administrator::class);
     }
 
 }

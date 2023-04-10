@@ -11,13 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('companies', function (Blueprint $table) {
+        Schema::create('Administrators', function (Blueprint $table) {
+
             $table->id();
             $table->timestamps();
+            $table->boolean('cargo'); // 0 -> fiscal .. 1 -> gestor
+            $table->string('cpf');
+            $table->string('contato');
             $table->string('nome');
-            $table->string('cnpj');
-            $table->string('descricao');
-            $table->boolean('contrato_ativo');
         });
     }
 
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('companies');
+        Schema::dropIfExists('Administrators');
     }
 };
