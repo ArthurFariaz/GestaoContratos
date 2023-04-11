@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\{CompaniesController,ContractsController};
+use App\Http\Controllers\{CompaniesController,ContractsController,AdministratorsController};
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,3 +22,6 @@ Route::resource('Contracts', ContractsController::class)
 
 Route::resource('Companies', CompaniesController::class)
     ->except(['destroy']);
+
+Route::resource('Administrators', AdministratorsController::class)
+    ->only(['create','store']);

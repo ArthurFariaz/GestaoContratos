@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\administrator;
-use App\Models\contract;
+use App\Models\{administrator,contract_adm,contract};
 use Illuminate\Http\Request;
+use function PHPUnit\Framework\isNull;
 
 class ContractsController extends Controller
 {
@@ -30,15 +30,12 @@ class ContractsController extends Controller
     }
 
     public function show(contract $Contract){
-        /*
-        $Fiscais = administrator::where('contratos_id',$Company->contratos_id)
-            ->where('cargo',0)
-            ->get();
-        $Gestor = administrator::where('contratos_id',$Company->contratos_id)
-            ->where('cargo',1)
-            ->get();
-        */
-        return view('Contracts.show',compact(['Contract']));
+
+        $Fiscais = contract_adm::query()->get();
+
+        $Gestor = contract_adm::query()->get();
+
+        return view('Contracts.show',compact(['Contract','Fiscais','Gestor']));
     }
 
 }

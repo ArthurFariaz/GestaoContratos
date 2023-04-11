@@ -24,8 +24,8 @@
 <body>
 <div class="container text-center">
     <div class="row">
-        <div class="col list-group">
-            <h3 class="list-group-item">Empresa</h3>
+        <div class="col-4 list-group">
+            <h3 class="list-group-item">Contrato</h3>
             <div class="list-group-item">{{"Numero do contrato: "}}{{$Contract->numero_contrato}}</div>
             <div class="list-group-item">{{"Numero do processo: "}}{{$Contract->numero_processo}}</div>
             <div class="list-group-item">{{"Objeto: "}}{{$Contract->objeto}}</div>
@@ -44,31 +44,37 @@
                     Voltar
                 </a>
             </div>
+            <div>
+                <a href="{{route('Administrators.create',$Contract)}}" type="submit" class="mt-2 btn btn-dark">
+                    Adicionar Gestor
+                </a>
+            </div>
         </div>
-        {{--
+
         <div>
+            @if(!(empty(get_object_vars($Gestor))))
             <div class="col list-group">
                 <h3 class="list-group-item">Gestor</h3>
                 <div class="list-group-item">{{$Gestor[0]['nome']}}</div>
                 <div class="list-group-item">{{"CPF: "}}{{$Gestor[0]['cpf']}}</div>
                 <div class="list-group-item">{{"Contato: "}}{{$Gestor[0]['contato']}}</div>
             </div>
-            <div class="col list-group">
-                <h3 class="list-group-item">Fiscais</h3>
-                <div class="row">
-                    <div class="col">
-                        <div class="list-group-item">{{$Fiscais[0]['nome']}}</div>
-                        <div class="list-group-item">{{"CPF: "}}{{$Fiscais[0]['cpf']}}</div>
-                        <div class="list-group-item">{{"Contato: "}}{{$Fiscais[0]['contato']}}</div>
-                    </div>
-                    <div class="col">
-                        <div class="list-group-item">{{$Fiscais[1]['nome']}}</div>
-                        <div class="list-group-item">{{"CPF: "}}{{$Fiscais[1]['cpf']}}</div>
-                        <div class="list-group-item">{{"Contato: "}}{{$Fiscais[1]['contato']}}</div>
+            @endif
+            @if(!(empty(get_object_vars($Fiscais))))
+                <div class="col list-group">
+                    <h3 class="list-group-item">Fiscais</h3>
+                    <div class="row">
+                        @foreach($Fiscais as $fiscal)
+                            <div class="col">
+                                <div class="list-group-item">{{$fiscal->nome}}</div>
+                                <div class="list-group-item">{{"CPF: "}}{{$fiscal->cpf}}</div>
+                                <div class="list-group-item">{{"Contato: "}}{{$fiscal->contato}}</div>
+                            </div>
+                        @endforeach
                     </div>
                 </div>
-            </div>
-        </div> --}}
+            @endif
+        </div>
     </div>
 </div>
 </body>

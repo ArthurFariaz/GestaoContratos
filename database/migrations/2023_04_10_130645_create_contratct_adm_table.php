@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('contract-adm', function (Blueprint $table) {
+        Schema::create('contract_adms', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
             $table->foreignId('contratos_id')->constrained();
@@ -24,6 +24,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('contract-adm');
+        Schema::dropIfExists('contract_adms');
     }
 };
