@@ -32,27 +32,20 @@
             <div class="list-group-item justify-content-between">
                 <span>{{"Status: "}}</span> @if($Contract->status) {{"Ativo"}} @else {{"Inativo"}} @endif
             </div>
-            {{--
-            <div>
-                <a href="{{route('Companies.edit',$Company)}}" class="col-3 mt-2 btn btn-sm btn-dark">
-                    Editar
-                </a>
-            </div>
-            --}}
             <div>
                 <a href="{{route('Contracts.index')}}" type="submit" class="mt-2 btn btn-primary">
                     Voltar
                 </a>
             </div>
             <div>
-                <a href="{{route('Administrators.create',$Contract)}}" type="submit" class="mt-2 btn btn-dark">
+                <a href="{{route('Administrators.create')}}" type="submit" class="mt-2 btn btn-dark">
                     Adicionar Gestor
                 </a>
             </div>
         </div>
 
         <div>
-            @if(!(empty(get_object_vars($Gestor))))
+            @if(empty($Gestor))
             <div class="col list-group">
                 <h3 class="list-group-item">Gestor</h3>
                 <div class="list-group-item">{{$Gestor[0]['nome']}}</div>

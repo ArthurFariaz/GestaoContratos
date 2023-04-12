@@ -23,8 +23,9 @@
     </style>
 </head>
 <body>
+@include('sweetalert::alert')
 <div class="container-sm text-center col-5">
-    <form action="{{route('Administrators.store',$Contract)}}" class="mt-4" method="post">
+    <form action="{{route('Administrators.store')}}" class="mt-4" method="post">
         @csrf
         <h2>Cadastro de empresas</h2>
         <div class="pd-4 mb-3 mt-4">

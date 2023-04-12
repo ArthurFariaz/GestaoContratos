@@ -4,13 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
 
-class administrator extends Model
+class Administrator extends Model
 {
     use HasFactory;
+
     protected $visible = ['nome','cpf','contato'];
-    public function Contrato()
+
+    public function relContract(): BelongsToMany
     {
-        return $this->hasMany(contract::class);
+        return $this->belongsToMany(contract::class);
     }
+
 }

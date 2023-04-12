@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('contracts', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('numero_contrato');
             $table->string('numero_processo');
             $table->string('objeto');
             $table->string('status');
+            $table->timestamps();
         });
     }
 

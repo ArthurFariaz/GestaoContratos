@@ -13,11 +13,11 @@ return new class extends Migration
     {
         Schema::create('companies', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string('nome');
             $table->string('cnpj');
             $table->string('descricao');
             $table->boolean('contrato_ativo');
+            $table->timestamps();
         });
     }
 

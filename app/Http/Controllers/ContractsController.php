@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{administrator,contract_adm,contract};
+use App\Models\{Contract};
 use Illuminate\Http\Request;
-use function PHPUnit\Framework\isNull;
 
 class ContractsController extends Controller
 {
     public function index(){
-        $Contracts = contract::query()->orderBy('numero_contrato')->get();
+        $Contracts = Contract::query()->orderBy('numero_contrato')->get();
         return view('Contracts.index',compact(['Contracts']));
     }
 
@@ -18,7 +17,7 @@ class ContractsController extends Controller
     }
 
     public function store(Request $request){
-        $contract = new contract();
+        $contract = new Contract();
         $contract->numero_contrato = $request->input('NumeroContratoInput');
         $contract->numero_processo = $request->input('NumeroProcessoInput');
         $contract->objeto = $request->input('ObjetoInput');
@@ -29,11 +28,13 @@ class ContractsController extends Controller
         return to_route('Contracts.index');
     }
 
-    public function show(contract $Contract){
+    public function edit(Contract $contract){
+        return view('Contracts.edit');
+    }
+    public function show(Contract $Contract){
 
-        $Fiscais = contract_adm::query()->get();
-
-        $Gestor = contract_adm::query()->get();
+        $Fiscais = $Contract->relAdministrator()->get();
+        $Gestor = $Contract->relAdministrator()->get();
 
         return view('Contracts.show',compact(['Contract','Fiscais','Gestor']));
     }

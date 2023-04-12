@@ -17,9 +17,18 @@
         @foreach($Contracts as $Contract)
             <li class="list-group-item d-flex justify-content-between align-items-center">
                 {{ $Contract->numero_processo }}
-                <a href="{{route('Contracts.show',$Contract->id)}}" class="btn btn-sm btn-primary">
-                    Detalhes
-                </a>
+                <div class="d-flex">
+                    <div class="me-2">
+                        <a href="{{route('Contracts.edit',$Contract->id)}}" class="btn btn-sm btn-primary">
+                            Editar
+                        </a>
+                    </div>
+                    <div>
+                        <a href="{{route('Contracts.show',$Contract->id)}}" class="btn btn-sm btn-primary">
+                            Detalhes
+                        </a>
+                    </div>
+                </div>
             </li>
         @endforeach
     </ul>

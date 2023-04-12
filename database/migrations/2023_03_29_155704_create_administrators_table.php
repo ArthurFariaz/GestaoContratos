@@ -12,13 +12,12 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('administrators', function (Blueprint $table) {
-
             $table->id();
-            $table->timestamps();
-            $table->boolean('cargo'); // 0 -> fiscal .. 1 -> gestor
+            $table->string('nome');
             $table->string('cpf');
             $table->string('contato');
-            $table->string('nome');
+            $table->boolean('cargo'); // 0 -> fiscal .. 1 -> gestor
+            $table->timestamps();
         });
     }
 

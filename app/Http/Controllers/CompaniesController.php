@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{administrator,company};
+use App\Models\{Company};
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -12,7 +12,7 @@ class CompaniesController extends Controller
 {
     public function index(){
 
-        $Companies = company::query()->orderBy('nome')->get();
+        $Companies = Company::query()->orderBy('nome')->get();
         return view('Companies.index')->with('Companies',$Companies);
 
     }
@@ -23,7 +23,7 @@ class CompaniesController extends Controller
 
     public function store(Request $request){
 
-        $Company = new company();
+        $Company = new Company();
         $Company->nome = $request->input('NameInput');
         $Company->cnpj = $request->input('CnpjInput');
         $Company->descricao = $request->input('DescricaoInput');
@@ -35,7 +35,7 @@ class CompaniesController extends Controller
         return to_route('Companies.index');
     }
 
-    public function show(company $Company){
+    public function show(Company $Company){
         /*
         $Fiscais = administrator::where('contratos_id',$Company->contratos_id)
             ->where('cargo',0)
@@ -49,11 +49,11 @@ class CompaniesController extends Controller
     }
 
 
-    public function edit(company $Company){
+    public function edit(Company $Company){
         return view('Companies.edit',compact(['Company']));
     }
 
-    public function update(company $Company,Request $request){
+    public function update(Company $Company,Request $request){
         Alert::success('Empresa atualizada');
 
         $Company->nome = $request->NameInput;
