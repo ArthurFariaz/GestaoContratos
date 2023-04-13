@@ -24,49 +24,54 @@
 </head>
 <body>
 <div class="container-sm text-center col-5">
-    <form action="{{route('Contracts.store')}}" class="mt-4" method="post">
+    <form action="{{route('Contracts.update',$Contract)}}" class="mt-4" method="post">
+        @method('put')
         @csrf
         <div class="justify-content-between">
             <div>
-                <div class="pd-4 mb-4 mt-4 row">
-                    <h2>Criação do contrato</h2>
+                <div class="pd-4 mb-3 mt-4 row">
+                    <h2>Edição do contrato</h2>
                     <div class="col">
                         <label for="NumeroContratoInput" class="form-label">Numero do contrato</label>
-                        <input type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput">
+                        <input value="{{$Contract->numero_contrato}}" type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput">
                     </div>
                     <div class="col">
                         <label for="NumeroProcessoInput" class="form-label">Numero do processo</label>
-                        <input type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput">
+                        <input value="{{$Contract->numero_processo}}" type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput">
                     </div>
                 </div>
-                <div class="pd-4 mb-3 mt-4">
+                <div class="pd-4 mb-3">
                     <label for="ObjetoInput" class="form-label">Objeto</label>
-                    <input type="text" class="form-control" id="ObjetoInput" name="ObjetoInput">
+                    <input value="{{$Contract->objeto}}" type="text" class="form-control" id="ObjetoInput" name="ObjetoInput">
                 </div>
-                <select name = "StatusInput" class="mt-4 form-select" aria-label=".form-select-sm ">
-                    <option selected>Status do contrato</option>
-                    <option value="1">Ativo</option>
-                    <option value="0">Inativo</option>
-                </select>
+                <div>
+                    <label class="text-start">Status</label>
+                    <select name = "StatusInput" class="mt-2 form-select" aria-label=".form-select-sm ">
+                        <option disabled selected hidden>@if($Contract->status) {{"Ativo"}} @else {{"Inativo"}} @endif</option>
+                        <option value="1">Ativo</option>
+                        <option value="0">Inativo</option>
+                    </select>
+                </div>
             </div>
             <div class="list-group">
-
-                <select name = "GestorInput" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Gestor do contrato</option>
+                <label class="ms-2 text-start mt-2">Gestor</label>
+                <select name = "GestorInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
+                    <option disabled selected hidden>{{$Gestor[0]['nome']}}</option>
                     <option value="1">João</option>
                     <option value="2">Lucas</option>
                 </select>
 
-                <select name = "FiscalInput1" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Fiscal do contrato</option>
+                <label class="ms-2 text-start mt-2">Fiscais</label>
+                <select name = "FiscalInput1" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
+                    <option disabled selected hidden>{{$Fiscais[0]['nome']}}</option>
                     <option value="3">Marcela</option>
                     <option value="4">Pedro</option>
                     <option value="5">Maria</option>
                     <option value="6">Luana</option>
                 </select>
 
-                <select name = "FiscalInput2" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Fiscal do contrato</option>
+                <select name = "FiscalInput2" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
+                    <option disabled selected hidden>{{$Fiscais[1]['nome']}}</option>
                     <option value="3">Marcela</option>
                     <option value="4">Pedro</option>
                     <option value="5">Maria</option>

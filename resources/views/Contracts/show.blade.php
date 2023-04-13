@@ -23,8 +23,11 @@
 </head>
 <body>
 <div class="container text-center">
+    <div class="text-start">
+        <a class="align-content-lg-end mb-2 btn-dark btn" href="{{route('Contracts.index')}}">Voltar</a>
+    </div>
     <div class="row">
-        <div class="col-4 list-group">
+        <div class="col list-group">
             <h3 class="list-group-item">Contrato</h3>
             <div class="list-group-item">{{"Numero do contrato: "}}{{$Contract->numero_contrato}}</div>
             <div class="list-group-item">{{"Numero do processo: "}}{{$Contract->numero_processo}}</div>
@@ -32,42 +35,33 @@
             <div class="list-group-item justify-content-between">
                 <span>{{"Status: "}}</span> @if($Contract->status) {{"Ativo"}} @else {{"Inativo"}} @endif
             </div>
-            <div>
-                <a href="{{route('Contracts.index')}}" type="submit" class="mt-2 btn btn-primary">
-                    Voltar
-                </a>
-            </div>
-            <div>
-                <a href="{{route('Administrators.create')}}" type="submit" class="mt-2 btn btn-dark">
-                    Adicionar Gestor
-                </a>
-            </div>
         </div>
-
-        <div>
-            @if(empty($Gestor))
-            <div class="col list-group">
+        @if(!(empty($Gestor)))
+        <div class="col">
+            <div class="list-group">
                 <h3 class="list-group-item">Gestor</h3>
                 <div class="list-group-item">{{$Gestor[0]['nome']}}</div>
                 <div class="list-group-item">{{"CPF: "}}{{$Gestor[0]['cpf']}}</div>
                 <div class="list-group-item">{{"Contato: "}}{{$Gestor[0]['contato']}}</div>
             </div>
-            @endif
-            @if(!(empty(get_object_vars($Fiscais))))
-                <div class="col list-group">
-                    <h3 class="list-group-item">Fiscais</h3>
-                    <div class="row">
-                        @foreach($Fiscais as $fiscal)
-                            <div class="col">
-                                <div class="list-group-item">{{$fiscal->nome}}</div>
-                                <div class="list-group-item">{{"CPF: "}}{{$fiscal->cpf}}</div>
-                                <div class="list-group-item">{{"Contato: "}}{{$fiscal->contato}}</div>
-                            </div>
-                        @endforeach
-                    </div>
-                </div>
-            @endif
         </div>
+        @endif
+        @if(!(empty($Fiscais)))
+        <div class="col">
+            <div class="list-group">
+                <h3 class="list-group-item">Fiscais</h3>
+                <div class="row">
+                    @foreach($Fiscais as $fiscal)
+                        <div class="col">
+                            <div class="list-group-item">{{$fiscal->nome}}</div>
+                            <div class="list-group-item">{{"CPF: "}}{{$fiscal->cpf}}</div>
+                            <div class="list-group-item">{{"Contato: "}}{{$fiscal->contato}}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+          @endif
     </div>
 </div>
 </body>
