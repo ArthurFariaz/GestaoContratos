@@ -58,6 +58,20 @@ class ContractsController extends Controller
         $Contract->objeto = $request->input('ObjetoInput');
         $Contract->status = $request->input('StatusInput');
 
+        $Contract->relAdministrator()->detach();
+
+        $gestor = $request->input('GestorInput');
+        $fiscal1 = $request->input('FiscalInput1');
+        $fiscal2 = $request->input('FiscalInput2');
+
+        $Contract->relAdministrator()->attach($gestor);
+        $Contract->relAdministrator()->attach($fiscal1);
+        $Contract->relAdministrator()->attach($fiscal2);
+
         $Contract->save();
+
+        return to_route('Contracts.index');
+
+
     }
 }

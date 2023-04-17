@@ -12,11 +12,11 @@ class Contract extends Model
 
     public function relCompanie(): BelongsToMany
     {
-        return $this->belongsToMany(company::class);
+        return $this->belongsToMany( Company::class);
     }
     public function relAdministrator(): BelongsToMany
     {
-        return $this->belongsToMany(administrator::class);
+        return $this->belongsToMany(Administrator::class);
     }
 
 }

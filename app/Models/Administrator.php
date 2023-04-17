@@ -14,7 +14,7 @@ class Administrator extends Model
 
     public function relContract(): BelongsToMany
     {
-        return $this->belongsToMany(contract::class);
+        return $this->belongsToMany(Contract::class);
     }
 
 }

@@ -14,6 +14,6 @@ class Company extends Model
     protected $fillable = ['nome','cnpj','descricao','contrato_ativo','contratos_id'];
 
     public function relContract(): BelongsToMany{
-        return $this->belongsToMany(contract::class);
+        return $this->belongsToMany(Contract::class);
     }
 }
