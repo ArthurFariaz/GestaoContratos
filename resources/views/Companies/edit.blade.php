@@ -28,7 +28,7 @@
     <form method="post" action="{{route('Companies.update',$Company)}}" class="mt-4">
         @method('PUT')
         @csrf
-        <h2>Cadastro de empresas</h2>
+        <h2>Edição da empresa</h2>
         <div class="pd-4 mb-3 mt-3">
             <label for="NameInput" class="form-label">Nome</label>
             <input type="text" value="{{$Company->nome}}" class="form-control" id="NameInput" name="NameInput">
@@ -41,19 +41,10 @@
             <label for="DescricaoInput" class="form-label">Descrição</label>
             <input type="text" value="{{$Company->descricao}}" class="form-control" id="DescricaoInput" name="DescricaoInput">
         </div>
-        <div class="pd-4 mb-3">
-            <label for="NumeroContratoInput" class="form-label">Numero do contrato</label>
-            <input type="text" value="{{$Company->contratos_id}}" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput">
-        </div>
-        <select name = "ContratoInput" class="mt-4 form-select" aria-label=".form-select-sm ">
-            <option selected>Contrato Ativo?</option>
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
-        </select>
 
         <button type="submit" class="mt-4 btn btn-dark">Atualizar</button>
         <div>
-            <a href="{{route('Companies.show',$Company)}}" type="submit" class="mt-1 btn btn-primary">
+            <a href="{{route('Contracts.index')}}" type="submit" class="mt-1 btn btn-primary">
                 Voltar
             </a>
         </div>

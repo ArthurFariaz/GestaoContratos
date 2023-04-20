@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('nome');
             $table->string('cnpj');
             $table->string('descricao');
-            $table->boolean('contrato_ativo');
             $table->timestamps();
         });
     }

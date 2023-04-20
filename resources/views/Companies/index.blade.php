@@ -17,13 +17,13 @@
                 @foreach($Companies as $Company)
                     <li class="list-group-item d-flex justify-content-between align-items-center">
                         {{ $Company->nome }}
-                        <a href="{{route('Companies.show',$Company->id)}}" class="btn btn-sm btn-primary">
-                            Detalhes
+                        <a href="{{route('Companies.edit',$Company->id)}}" class="btn btn-sm btn-primary">
+                            Editar
                         </a>
                     </li>
                 @endforeach
             </ul>
-            <a type="button" href="{{route('Companies.create')}}" class="mt-4 btn btn-dark">Adicionar Empresa</a>
+            <a type="button" href="{{route('Contracts.index')}}" class="mt-4 btn btn-dark">Voltar</a>
         </div>
     </body>
 </html>

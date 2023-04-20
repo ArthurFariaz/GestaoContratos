@@ -27,25 +27,10 @@ class CompaniesController extends Controller
         $Company->nome = $request->input('NameInput');
         $Company->cnpj = $request->input('CnpjInput');
         $Company->descricao = $request->input('DescricaoInput');
-        $Company->contrato_ativo = $request->input('ContratoInput');
-        //$Company->contratos_id = 1;
         $Company->save();
 
         alert()->success('Empresa criada')->toToast();
-        return to_route('Companies.index');
-    }
-
-    public function show(Company $Company){
-        /*
-        $Fiscais = administrator::where('contratos_id',$Company->contratos_id)
-            ->where('cargo',0)
-            ->get();
-        $Gestor = administrator::where('contratos_id',$Company->contratos_id)
-            ->where('cargo',1)
-            ->get();
-        */
-        return view('Companies.show',compact(['Company']));
-
+        return to_route('Contracts.index');
     }
 
 
@@ -54,17 +39,14 @@ class CompaniesController extends Controller
     }
 
     public function update(Company $Company,Request $request){
-        Alert::success('Empresa atualizada');
-
         $Company->nome = $request->NameInput;
         $Company->nome = $request->input('NameInput');
         $Company->cnpj = $request->input('CnpjInput');
         $Company->descricao = $request->input('DescricaoInput');
-        $Company->contrato_ativo = $request->input('ContratoInput');
-        $Company->contratos_id = $request->input('NumeroContratoInput');
 
-        $Company->save();
-
+        if($Company->save()){
+            alert()->success('Empresa atualizada')->toToast();
+        }
         return to_route('Companies.index');
     }
 }

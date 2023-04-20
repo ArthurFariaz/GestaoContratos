@@ -39,14 +39,9 @@
             <label for="DescricaoInput" class="form-label">Descrição</label>
             <input type="text" class="form-control" id="DescricaoInput" name="DescricaoInput">
         </div>
-        <select name = "ContratoInput" class="mt-4 form-select" aria-label=".form-select-sm ">
-            <option selected>Contrato Ativo?</option>
-            <option value="1">Sim</option>
-            <option value="0">Não</option>
-        </select>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
         <div>
-            <a href="{{route('Companies.index')}}" type="submit" class="mt-2 btn btn-primary">
+            <a href="{{route('Contracts.index')}}" type="submit" class="mt-2 btn btn-primary">
                 Voltar
             </a>
         </div>

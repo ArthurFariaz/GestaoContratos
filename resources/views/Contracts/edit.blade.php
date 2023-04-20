@@ -79,6 +79,13 @@
                 </select>
             </div>
         </div>
+        <div class="list-group mt-2">
+            <label>Empresa</label>
+            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
+                <option disabled selected hidden>{{$Empresa[0]['nome']}}</option>
+                <option value="1">Anatel</option>
+            </select>
+        </div>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
         <div>
             <a href="{{route('Contracts.index')}}" type="submit" class="mt-2 btn btn-primary">

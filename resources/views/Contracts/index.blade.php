@@ -32,7 +32,15 @@
             </li>
         @endforeach
     </ul>
-    <a type="button" href="{{route('Contracts.create')}}" class="mt-4 btn btn-dark">Criar contrato</a>
+    <div>
+        <a type="button" href="{{route('Contracts.create')}}" class="mt-4 btn btn-dark">Criar contrato</a>
+    </div>
+    <div>
+        <a type="button" href="{{route('Companies.create')}}" class="mt-2 btn btn-dark">Adicionar empresa</a>
+    </div>
+    <div>
+        <a type="button" href="{{route('Companies.index')}}" class="mt-2 btn btn-dark">Visualizar empresas</a>
+    </div>
 </div>
 </body>
 </html>

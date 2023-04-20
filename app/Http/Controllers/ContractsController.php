@@ -13,6 +13,7 @@ class ContractsController extends Controller
     }
 
     public function create(){
+
         return view('Contracts.create');
     }
 
@@ -40,15 +41,16 @@ class ContractsController extends Controller
 
         $Fiscais = $Contract->relAdministrator()->where('cargo',0)->get();
         $Gestor = $Contract->relAdministrator()->where('cargo',1)->get();
-        return view('Contracts.show',compact(['Contract','Fiscais','Gestor']));
+        $Empresa = $Contract->relCompanie()->get();
+        return view('Contracts.show',compact(['Contract','Fiscais','Gestor','Empresa']));
     }
 
     public function edit(Contract $Contract){
 
         $Fiscais = $Contract->relAdministrator()->where('cargo',0)->get();
         $Gestor = $Contract->relAdministrator()->where('cargo',1)->get();
-
-        return view('Contracts.edit',compact(['Contract','Fiscais','Gestor']));
+        $Empresa = $Contract->relCompanie()->get();
+        return view('Contracts.edit',compact(['Contract','Fiscais','Gestor','Empresa']));
     }
 
     public function update(Contract $Contract,Request $request){
@@ -59,14 +61,17 @@ class ContractsController extends Controller
         $Contract->status = $request->input('StatusInput');
 
         $Contract->relAdministrator()->detach();
+        $Contract->relCompanie()->detach();
 
         $gestor = $request->input('GestorInput');
         $fiscal1 = $request->input('FiscalInput1');
         $fiscal2 = $request->input('FiscalInput2');
+        $empresa = $request->input('EmpresaInput');
 
         $Contract->relAdministrator()->attach($gestor);
         $Contract->relAdministrator()->attach($fiscal1);
         $Contract->relAdministrator()->attach($fiscal2);
+        $Contract->relCompanie()->attach($empresa);
 
         $Contract->save();
 
