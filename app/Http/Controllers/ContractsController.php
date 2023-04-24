@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\{Administrator, Contract};
+use App\Models\{Administrator, Company, Contract};
+use App\Repositories\AdminstratorsRepository;
 use Illuminate\Http\Request;
 
 class ContractsController extends Controller
@@ -14,7 +15,16 @@ class ContractsController extends Controller
 
     public function create(){
 
-        return view('Contracts.create');
+        /*
+        $adm = new AdminstratorsRepository();
+        $adm->add();
+        */
+
+        $FiscaisBD = Administrator::where('cargo',0)->orderBy('nome')->get();
+        $GestoresBD = Administrator::where('cargo',1)->orderBy('nome')->get();
+        $CompanyBD = Company::query()->orderBy('nome')->get();
+
+        return view('Contracts.create',compact(['FiscaisBD','GestoresBD','CompanyBD']));
     }
 
     public function store(Request $request){
@@ -26,6 +36,7 @@ class ContractsController extends Controller
         $gestor = $request->input('GestorInput');
         $fiscal1 = $request->input('FiscalInput1');
         $fiscal2 = $request->input('FiscalInput2');
+        $empresa = $request->input('EmpresaInput');
 
         if(!($contract->save())){
             alert()->error('ERRO','Contrato não cadastrada')->toToast();
@@ -34,6 +45,7 @@ class ContractsController extends Controller
         $contract->relAdministrator()->attach($gestor);
         $contract->relAdministrator()->attach($fiscal1);
         $contract->relAdministrator()->attach($fiscal2);
+        $contract->relCompanie()->attach($empresa);
 
         return to_route('Contracts.index');
     }
@@ -42,15 +54,22 @@ class ContractsController extends Controller
         $Fiscais = $Contract->relAdministrator()->where('cargo',0)->get();
         $Gestor = $Contract->relAdministrator()->where('cargo',1)->get();
         $Empresa = $Contract->relCompanie()->get();
+
         return view('Contracts.show',compact(['Contract','Fiscais','Gestor','Empresa']));
     }
 
     public function edit(Contract $Contract){
 
+        $FiscaisBD = Administrator::where('cargo',0)->get();
+        $GestoresBD = Administrator::where('cargo',1)->get();
+        $CompanyBD = Company::query()->orderBy('nome')->get();
+
         $Fiscais = $Contract->relAdministrator()->where('cargo',0)->get();
         $Gestor = $Contract->relAdministrator()->where('cargo',1)->get();
         $Empresa = $Contract->relCompanie()->get();
-        return view('Contracts.edit',compact(['Contract','Fiscais','Gestor','Empresa']));
+        return view('Contracts.edit',
+            compact(['Contract','Fiscais','Gestor','Empresa','FiscaisBD','GestoresBD','CompanyBD'])
+            );
     }
 
     public function update(Contract $Contract,Request $request){
@@ -63,20 +82,28 @@ class ContractsController extends Controller
         $Contract->relAdministrator()->detach();
         $Contract->relCompanie()->detach();
 
-        $gestor = $request->input('GestorInput');
-        $fiscal1 = $request->input('FiscalInput1');
-        $fiscal2 = $request->input('FiscalInput2');
+        $gestorbd = Administrator::where('nome',$request->input('GestorInput'))->get();
+        $fiscal1bd = Administrator::where('nome',$request->input('FiscalInput1'))->get();
+        $fiscal2bd = Administrator::where('nome',$request->input('FiscalInput2'))->get();
         $empresa = $request->input('EmpresaInput');
 
-        $Contract->relAdministrator()->attach($gestor);
-        $Contract->relAdministrator()->attach($fiscal1);
-        $Contract->relAdministrator()->attach($fiscal2);
-        $Contract->relCompanie()->attach($empresa);
+        $Contract->relAdministrator()->attach($gestorbd);
+        $Contract->relAdministrator()->attach($fiscal1bd);
+        $Contract->relAdministrator()->attach($fiscal2bd);
+        $Contract->relCompanie()->attach($request->input('EmpresaInput'));
 
         $Contract->save();
 
         return to_route('Contracts.index');
 
-
     }
+
+    public function destroy(Contract $Contract){
+        $Contract->relCompanie()->detach();
+        $Contract->relAdministrator()->detach();
+        $Contract->delete();
+
+        return to_route('Contracts.index');
+    }
+
 }

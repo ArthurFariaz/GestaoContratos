@@ -17,11 +17,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return redirect('/Contracts');
 });
-Route::resource('Contracts', ContractsController::class)
-    ->except(['destroy']);
+Route::resource('Contracts', ContractsController::class);
 
 Route::resource('Companies', CompaniesController::class)
     ->except(['destroy']);
-
+/*
 Route::resource('Administrators', AdministratorsController::class)
     ->only(['create','store']);
+*/

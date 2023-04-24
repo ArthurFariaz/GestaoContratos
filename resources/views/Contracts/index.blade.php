@@ -28,6 +28,13 @@
                             Detalhes
                         </a>
                     </div>
+                    <form action="{{route('Contracts.destroy',$Contract->id)}}" method="post" class="ms-2">
+                        @csrf
+                        @method('DELETE')
+                        <button  class="btn btn-sm btn-danger">
+                            X
+                        </button>
+                    </form>
                 </div>
             </li>
         @endforeach
@@ -36,10 +43,12 @@
         <a type="button" href="{{route('Contracts.create')}}" class="mt-4 btn btn-dark">Criar contrato</a>
     </div>
     <div>
-        <a type="button" href="{{route('Companies.create')}}" class="mt-2 btn btn-dark">Adicionar empresa</a>
-    </div>
-    <div>
-        <a type="button" href="{{route('Companies.index')}}" class="mt-2 btn btn-dark">Visualizar empresas</a>
+        <a type="button" href="{{route('Companies.create')}}" class="mt-2 btn btn-dark">
+            Adicionar empresa
+        </a>
+        <a type="button" href="{{route('Companies.index')}}" class="mt-2 btn btn-dark">
+            Visualizar empresas
+        </a>
     </div>
 </div>
 </body>

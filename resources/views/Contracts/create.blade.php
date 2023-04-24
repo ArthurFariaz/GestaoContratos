@@ -53,26 +53,33 @@
 
                 <select name = "GestorInput" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
                     <option selected>Gestor do contrato</option>
-                    <option value="1">João</option>
-                    <option value="2">Lucas</option>
+                    @foreach($GestoresBD as $Gestores)
+                        <option value="{{$Gestores->nome}}">{{$Gestores->nome}}</option>
+                    @endforeach
                 </select>
 
                 <select name = "FiscalInput1" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
                     <option selected>Fiscal do contrato</option>
-                    <option value="3">Marcela</option>
-                    <option value="4">Pedro</option>
-                    <option value="5">Maria</option>
-                    <option value="6">Luana</option>
+                    @foreach($FiscaisBD as $Fiscal)
+                        <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
+                    @endforeach
                 </select>
 
                 <select name = "FiscalInput2" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
                     <option selected>Fiscal do contrato</option>
-                    <option value="3">Marcela</option>
-                    <option value="4">Pedro</option>
-                    <option value="5">Maria</option>
-                    <option value="6">Luana</option>
+                    @foreach($FiscaisBD as $Fiscal)
+                        <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
+                    @endforeach
                 </select>
             </div>
+        </div>
+        <div class="list-group mt-2">
+            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
+                <option selected>Empresa do contrato</option>
+                @foreach($CompanyBD as $Company)
+                    <option value="{{$Company->nome}}">{{$Company->nome}}</option>
+                @endforeach
+            </select>
         </div>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
         <div>

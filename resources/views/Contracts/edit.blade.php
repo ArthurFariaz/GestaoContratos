@@ -57,25 +57,24 @@
                 <label class="ms-2 text-start mt-2">Gestor</label>
                 <select name = "GestorInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
                     <option disabled selected hidden>{{$Gestor[0]['nome']}}</option>
-                    <option value="1">João</option>
-                    <option value="2">Lucas</option>
+                    @foreach($GestoresBD as $Gestores)
+                        <option value="{{$Gestores->nome}}">{{$Gestores->nome}}</option>
+                    @endforeach
                 </select>
 
                 <label class="ms-2 text-start mt-2">Fiscais</label>
                 <select name = "FiscalInput1" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
                     <option disabled selected hidden>{{$Fiscais[0]['nome']}}</option>
-                    <option value="3">Marcela</option>
-                    <option value="4">Pedro</option>
-                    <option value="5">Maria</option>
-                    <option value="6">Luana</option>
+                    @foreach($FiscaisBD as $Fiscal)
+                        <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
+                    @endforeach
                 </select>
 
                 <select name = "FiscalInput2" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
                     <option disabled selected hidden>{{$Fiscais[1]['nome']}}</option>
-                    <option value="3">Marcela</option>
-                    <option value="4">Pedro</option>
-                    <option value="5">Maria</option>
-                    <option value="6">Luana</option>
+                    @foreach($FiscaisBD as $Fiscal)
+                        <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
+                    @endforeach
                 </select>
             </div>
         </div>
@@ -83,7 +82,9 @@
             <label>Empresa</label>
             <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
                 <option disabled selected hidden>{{$Empresa[0]['nome']}}</option>
-                <option value="1">Anatel</option>
+                @foreach($CompanyBD as $Company)
+                    <option value="{{$Company->nome}}">{{$Company->nome}}</option>
+                @endforeach
             </select>
         </div>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
