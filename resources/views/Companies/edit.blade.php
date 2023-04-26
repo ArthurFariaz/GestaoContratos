@@ -31,15 +31,15 @@
         <h2>Edição da empresa</h2>
         <div class="pd-4 mb-3 mt-3">
             <label for="NameInput" class="form-label">Nome</label>
-            <input type="text" value="{{$Company->nome}}" class="form-control" id="NameInput" name="NameInput">
+            <input type="text" value="{{$Company->nome}}" class="form-control" id="NameInput" name="NameInput" required>
         </div>
         <div class="pd-4 mb-3">
             <label for="CnpjInput" class="form-label">CNPJ</label>
-            <input type="text" value="{{$Company->cnpj}}" class="form-control" id="CnpjInput" name="CnpjInput">
+            <input type="text" value="{{$Company->cnpj}}" class="form-control" id="CnpjInput" name="CnpjInput" required>
         </div>
         <div class="pd-4 mb-3">
             <label for="DescricaoInput" class="form-label">Descrição</label>
-            <input type="text" value="{{$Company->descricao}}" class="form-control" id="DescricaoInput" name="DescricaoInput">
+            <input type="text" value="{{$Company->descricao}}" class="form-control" id="DescricaoInput" name="DescricaoInput" required>
         </div>
 
         <button type="submit" class="mt-4 btn btn-dark">Atualizar</button>

@@ -29,15 +29,15 @@
         <h2>Cadastro de empresas</h2>
         <div class="pd-4 mb-3 mt-4">
             <label for="NameInput" class="form-label">Nome</label>
-            <input type="text" class="form-control" id="NameInput" name="NameInput">
+            <input type="text" class="form-control" id="NameInput" name="NameInput" required>
         </div>
         <div class="pd-4 mb-3">
             <label for="CnpjInput" class="form-label">CNPJ</label>
-            <input type="text" class="form-control" id="CnpjInput" name="CnpjInput">
+            <input type="text" class="form-control" id="CnpjInput" name="CnpjInput" required>
         </div>
         <div class="pd-4 mb-3">
             <label for="DescricaoInput" class="form-label">Descrição</label>
-            <input type="text" class="form-control" id="DescricaoInput" name="DescricaoInput">
+            <input type="text" class="form-control" id="DescricaoInput" name="DescricaoInput" required>
         </div>
         <button type="submit" class="mt-4 btn btn-dark">Adicionar</button>
         <div>

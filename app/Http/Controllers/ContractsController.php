@@ -85,7 +85,6 @@ class ContractsController extends Controller
         $gestorbd = Administrator::where('nome',$request->input('GestorInput'))->get();
         $fiscal1bd = Administrator::where('nome',$request->input('FiscalInput1'))->get();
         $fiscal2bd = Administrator::where('nome',$request->input('FiscalInput2'))->get();
-        $empresa = $request->input('EmpresaInput');
 
         $Contract->relAdministrator()->attach($gestorbd);
         $Contract->relAdministrator()->attach($fiscal1bd);

@@ -32,41 +32,41 @@
                     <h2>Criação do contrato</h2>
                     <div class="col">
                         <label for="NumeroContratoInput" class="form-label">Numero do contrato</label>
-                        <input type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput">
+                        <input type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput" required>
                     </div>
                     <div class="col">
                         <label for="NumeroProcessoInput" class="form-label">Numero do processo</label>
-                        <input type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput">
+                        <input type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput" required>
                     </div>
                 </div>
                 <div class="pd-4 mb-3 mt-4">
                     <label for="ObjetoInput" class="form-label">Objeto</label>
-                    <input type="text" class="form-control" id="ObjetoInput" name="ObjetoInput">
+                    <input type="text" class="form-control" id="ObjetoInput" name="ObjetoInput" required>
                 </div>
-                <select name = "StatusInput" class="mt-4 form-select" aria-label=".form-select-sm ">
-                    <option selected>Status do contrato</option>
+                <select name = "StatusInput" class="mt-4 form-select" aria-label=".form-select-sm" required>
+                    <option selected disabled value="">Status do contrato</option>
                     <option value="1">Ativo</option>
                     <option value="0">Inativo</option>
                 </select>
             </div>
             <div class="list-group">
 
-                <select name = "GestorInput" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Gestor do contrato</option>
+                <select name = "GestorInput" class="mt-4 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option selected disabled value="">Gestor do contrato</option>
                     @foreach($GestoresBD as $Gestores)
                         <option value="{{$Gestores->nome}}">{{$Gestores->nome}}</option>
                     @endforeach
                 </select>
 
-                <select name = "FiscalInput1" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Fiscal do contrato</option>
+                <select name = "FiscalInput1" class="mt-4 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option selected disabled value="">Fiscal do contrato</option>
                     @foreach($FiscaisBD as $Fiscal)
                         <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
                     @endforeach
                 </select>
 
-                <select name = "FiscalInput2" class="mt-4 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option selected>Fiscal do contrato</option>
+                <select name = "FiscalInput2" class="mt-4 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option selected disabled value="">Fiscal do contrato</option>
                     @foreach($FiscaisBD as $Fiscal)
                         <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
                     @endforeach
@@ -74,8 +74,8 @@
             </div>
         </div>
         <div class="list-group mt-2">
-            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
-                <option selected>Empresa do contrato</option>
+            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm" required>
+                <option selected disabled value="">Empresa do contrato</option>
                 @foreach($CompanyBD as $Company)
                     <option value="{{$Company->nome}}">{{$Company->nome}}</option>
                 @endforeach

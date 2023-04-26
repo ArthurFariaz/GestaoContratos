@@ -33,21 +33,21 @@
                     <h2>Edição do contrato</h2>
                     <div class="col">
                         <label for="NumeroContratoInput" class="form-label">Numero do contrato</label>
-                        <input value="{{$Contract->numero_contrato}}" type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput">
+                        <input value="{{$Contract->numero_contrato}}" type="text" class="form-control" id="NumeroContratoInput" name="NumeroContratoInput" required>
                     </div>
                     <div class="col">
                         <label for="NumeroProcessoInput" class="form-label">Numero do processo</label>
-                        <input value="{{$Contract->numero_processo}}" type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput">
+                        <input value="{{$Contract->numero_processo}}" type="text" class="form-control" id="NumeroProcessoInput" name="NumeroProcessoInput" required>
                     </div>
                 </div>
                 <div class="pd-4 mb-3">
                     <label for="ObjetoInput" class="form-label">Objeto</label>
-                    <input value="{{$Contract->objeto}}" type="text" class="form-control" id="ObjetoInput" name="ObjetoInput">
+                    <input value="{{$Contract->objeto}}" type="text" class="form-control" id="ObjetoInput" name="ObjetoInput" required>
                 </div>
                 <div>
                     <label class="text-start">Status</label>
-                    <select name = "StatusInput" class="mt-2 form-select" aria-label=".form-select-sm ">
-                        <option disabled selected hidden>@if($Contract->status) {{"Ativo"}} @else {{"Inativo"}} @endif</option>
+                    <select name = "StatusInput" class="mt-2 form-select" aria-label=".form-select-sm" required>
+                        <option disabled selected value="">@if($Contract->status) {{"Ativo"}} @else {{"Inativo"}} @endif</option>
                         <option value="1">Ativo</option>
                         <option value="0">Inativo</option>
                     </select>
@@ -55,23 +55,23 @@
             </div>
             <div class="list-group">
                 <label class="ms-2 text-start mt-2">Gestor</label>
-                <select name = "GestorInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option disabled selected hidden>{{$Gestor[0]['nome']}}</option>
+                <select name = "GestorInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option disabled selected value="">{{$Gestor[0]['nome']}}</option>
                     @foreach($GestoresBD as $Gestores)
                         <option value="{{$Gestores->nome}}">{{$Gestores->nome}}</option>
                     @endforeach
                 </select>
 
                 <label class="ms-2 text-start mt-2">Fiscais</label>
-                <select name = "FiscalInput1" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option disabled selected hidden>{{$Fiscais[0]['nome']}}</option>
+                <select name = "FiscalInput1" class="mt-2 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option disabled selected value="">{{$Fiscais[0]['nome']}}</option>
                     @foreach($FiscaisBD as $Fiscal)
                         <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
                     @endforeach
                 </select>
 
-                <select name = "FiscalInput2" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
-                    <option disabled selected hidden>{{$Fiscais[1]['nome']}}</option>
+                <select name = "FiscalInput2" class="mt-2 form-select list-group-item" aria-label=".form-select-sm" required>
+                    <option disabled selected value="">{{$Fiscais[1]['nome']}}</option>
                     @foreach($FiscaisBD as $Fiscal)
                         <option value="{{$Fiscal->nome}}">{{$Fiscal->nome}}</option>
                     @endforeach
@@ -80,8 +80,8 @@
         </div>
         <div class="list-group mt-2">
             <label>Empresa</label>
-            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm ">
-                <option disabled selected hidden>{{$Empresa[0]['nome']}}</option>
+            <select name = "EmpresaInput" class="mt-2 form-select list-group-item" aria-label=".form-select-sm" required>
+                <option disabled selected value="">{{$Empresa[0]['nome']}}</option>
                 @foreach($CompanyBD as $Company)
                     <option value="{{$Company->nome}}">{{$Company->nome}}</option>
                 @endforeach
